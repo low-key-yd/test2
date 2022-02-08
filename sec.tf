@@ -86,3 +86,33 @@ resource "aws_security_group" "web11" {
     Name = "web-${var.project}-security_group"
   }
 }
+
+resource "aws_security_group" "ssh_access_new" {
+
+  name        = "ssh_new"
+  description = "allow 22 traffic"
+
+
+  ingress {
+    description      = ""
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = [ "0.0.0.0/0" ]
+    ipv6_cidr_blocks = [ "::/0" ]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "ssh-${var.project}"
+  }
+}
+
+
