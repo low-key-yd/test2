@@ -1,6 +1,6 @@
-resource "aws_security_group" "webserver" {
+resource "aws_security_group" "web" {
     
-  name        = "webserver"
+  name        = "web"
   description = "allows 80,443 traffic"
  
 
@@ -23,15 +23,15 @@ resource "aws_security_group" "webserver" {
   }
 
   tags = {
-    Name = "webserver-${var.project}-security_group"
+    Name = "web-${var.project}-security_group"
   }
 }
 
 
 
-resource "aws_security_group" "ssh" {
+resource "aws_security_group" "ssh_access" {
     
-  name        = "remote"
+  name        = "ssh"
   description = "allow 22 traffic"
  
 
